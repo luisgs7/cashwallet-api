@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   app:
+    user: $UID:$GID
     build:
       context: .
       args:
