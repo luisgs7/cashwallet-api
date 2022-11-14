@@ -1,4 +1,4 @@
-FROM 3.10.8-alpine3.15
+FROM python:3.10-alpine
 LABEL maintainer="iadevlab.com"
 
 ENV PYTHONUNBUFFERED 1
@@ -15,9 +15,6 @@ RUN python -m venv /py && \
     apk add --update --no-cache --virtual .tmp-build-deps \
     build-base postgresql-dev musl-dev zlib zlib-dev linux-headers && \
     /py/bin/pip install -r /tmp/requirements.txt && \
-    if [ $DEV = "true" ]; \
-    then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
-    fi && \
     rm -rf /tmp && \
     apk del .tmp-build-deps && \
     adduser \
@@ -27,8 +24,7 @@ RUN python -m venv /py && \
     mkdir -p /vol/web/media && \
     mkdir -p /vol/web/static && \
     chown -R django-user:django-user /vol && \
-    chmod -R 755 /vol && \
-    chmod -R +x /scripts
+    chmod -R 755 /vol
 
 ENV PATH="/scripts:/py/bin:$PATH"
 
