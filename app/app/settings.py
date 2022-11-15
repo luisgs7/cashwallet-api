@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #TODO: My Apps # noqa pylint: disable= W0511
+    #TODO: My Apps
     'core',
 ]
 
