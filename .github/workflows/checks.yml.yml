@@ -1,7 +1,7 @@
 ---
 name: Checks
 
-on: [push]
+on: [push, pull_request_review]
 
 jobs:
   test-lint:
