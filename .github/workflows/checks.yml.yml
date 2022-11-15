@@ -14,6 +14,7 @@ jobs:
       - name: Test
         env:
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+          DEBUG: ${{ secrets.DJANGO_DEBUG }}
         run: docker-compose run --rm app sh -c "python manage.py test"
 
       - name: Flake8
