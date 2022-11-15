@@ -1,0 +1,23 @@
+---
+name: Checks
+
+on: [push]
+
+jobs:
+  test-lint:
+    name: Test and Lint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Test
+        env:
+          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+        run: docker-compose run --rm app sh -c "python manage.py test"
+
+      - name: Flake8
+        run: docker-compose run --rm app sh -c "flake8"
+
+      - name: Pylint
+        run: docker-compose run --rm app sh -c "pylint *"
