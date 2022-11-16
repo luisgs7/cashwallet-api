@@ -15,7 +15,7 @@ jobs:
         env:
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DEBUG: ${{ secrets.DJANGO_DEBUG }}
-        run: docker-compose run --rm app sh -c "export UID=${UID} && export GID=${GID} && python manage.py wait_for_db && python manage.py test"
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
 
       - name: Flake8
         run: docker-compose run --rm app sh -c "flake8"
