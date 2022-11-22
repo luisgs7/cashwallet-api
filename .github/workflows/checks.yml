@@ -17,8 +17,5 @@ jobs:
           DEBUG: ${{ secrets.DJANGO_DEBUG }}
         run: docker-compose run --rm app sh -c "python manage.py test"
 
-      - name: Flake8
-        run: docker-compose run --rm app sh -c "flake8"
-
       - name: Pylint
         run: docker-compose run --rm app sh -c "pylint *"
