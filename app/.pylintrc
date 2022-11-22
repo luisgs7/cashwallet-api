@@ -4,6 +4,10 @@ disable=
     C0114, # missing-module-docstring
     C0415, # Import outside toplevel (Module manage)
     E1101, # Instance of 'Style' has no 'SUCCESS' member (no-member)
+    W0511, # app/settings.py:47:5: W0511: TODO: My Apps (fixme)
+    C0301, # C0301: Line too long (117/100) (line-too-long)
+    C0115, # Missing class docstring (missing-class-docstring)
+    C0103, # Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
 # 3 compatible code, which means that the block might have code that exists
