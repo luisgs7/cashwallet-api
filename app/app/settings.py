@@ -91,10 +91,6 @@ DATABASES = {
         'PASSWORD': os.environ.get('DB_PASS'),
     }
 }
-print(f'Database HOST Config: {os.environ.get("DB_HOST")}')
-print(f'Database NAME Config: {os.environ.get("DB_NAME")}')
-print(f'Database USER Config: {os.environ.get("DB_USER")}')
-print(f'Database PASS Config: {os.environ.get("DB_PASS")}')
 
 
 # Password validation
