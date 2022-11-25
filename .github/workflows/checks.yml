@@ -23,3 +23,6 @@ jobs:
 
       - name: Pylint
         run: docker-compose run --rm app sh -c "pylint *"
+
+      - name: Flake8
+        run: docker-compose run --rm app sh -c "flake8"
