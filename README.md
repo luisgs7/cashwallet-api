@@ -36,4 +36,4 @@ This repository contains the App's API project.
 * API documentation with Swagger
 * Rest API with Django Rest Framework
 * Security (JWT authentication)
-* Deploy no Render
+* Deploy on Render
