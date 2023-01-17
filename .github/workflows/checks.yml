@@ -22,7 +22,7 @@ jobs:
         run: docker-compose run --rm app sh -c "python manage.py wait_for_db && coverage run manage.py test" ${{ matrix.test-name }}
       
       - name: Upload coverage data to coveralls.io
-        run: coveralls --service=github
+        run: docker-compose run --rm app sh -c "coveralls --service=github"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_FLAG_NAME: ${{ matrix.test-name }}
@@ -42,7 +42,7 @@ jobs:
     - name: Finished
       run: |
         docker-compose run --rm app sh -c "pip install --upgrade coveralls"
-        coveralls --service=github --finish
+        docker-compose run --rm app sh -c "coveralls --service=github --finish"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
