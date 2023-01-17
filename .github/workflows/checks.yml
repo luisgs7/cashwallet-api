@@ -19,8 +19,13 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
-        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
-
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && coverage run manage.py test"
+      
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      
       - name: Pylint
         run: docker-compose run --rm app sh -c "pylint *"
 
