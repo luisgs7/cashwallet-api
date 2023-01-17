@@ -26,9 +26,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_FLAG_NAME: ${{ matrix.test-name }}
-      
+          
       - name: Pylint
         run: docker-compose run --rm app sh -c "pylint *"
 
       - name: Flake8
         run: docker-compose run --rm app sh -c "flake8"
+        
+  coveralls:
+    name: Indicate completion to coveralls.io
+    needs: test-lint
+    runs-on: ubuntu-latest
+    container: python:3-slim
+    steps:
+    - name: Finished
+      run: |
+        docker-compose run --rm app sh -c "pip install --upgrade coveralls"
+        coveralls --service=github --finish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      
