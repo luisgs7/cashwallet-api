@@ -1,6 +1,8 @@
+[![CI](https://github.com/dynaconf/dynaconf/actions/workflows/main.yml/badge.svg)](https://github.com/luisgs7/cashwallet-api/actions/workflows/checks.yml)
 [![Coverage Status](https://coveralls.io/repos/github/luisgs7/cashwallet-api/badge.svg?branch=main)](https://coveralls.io/github/luisgs7/cashwallet-api?branch=main)
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/)
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
+
 
 # **CashWallet API**
 Cashwallet is an open-source project, an application that performs personal financial control.
