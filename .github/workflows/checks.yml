@@ -23,9 +23,12 @@ jobs:
              python manage.py wait_for_db &&
              coverage run manage.py test && coverage report && mv .coverage shared"
 
+      - name: Verificar existencia do arquivo
+        run: docker-compose run app sh -c "ls -a ./shared/"
+
       - uses: codecov/codecov-action@v3
         with:
-          files: docker-compose run app sh -c "./shared/.coverage"
+          files: ./shared/.codecov
           verbose: true # optional (default = false)
           
       - name: Pylint
