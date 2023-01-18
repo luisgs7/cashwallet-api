@@ -19,19 +19,12 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
-        run: docker-compose run -v "$PWD/shared:/shared" app sh -c "mkdir shared && 
-             python manage.py wait_for_db &&
-             coverage run manage.py test && coverage report && mv .coverage shared"
-
-      - name: Verificar existencia do arquivo
-        run: docker-compose run app sh -c "ls -a ./shared/"
-
-      - name: Copiar os arquivos
-        run: docker compose cp cashwallet-api:./shared/.coverage /home/runner/work/cashwallet-api/cashwallet-api/
-
+        run: docker-compose run app sh -c "python manage.py wait_for_db && 
+             coverage run manage.py test && coverage app/"
+        
       - uses: codecov/codecov-action@v3
         with:
-          files: ./shared/.codecov
+          files: ./app/.codecov
           verbose: true # optional (default = false)
           
       - name: Pylint
