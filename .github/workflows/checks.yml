@@ -27,7 +27,7 @@ jobs:
         run: docker-compose run app sh -c "ls -a ./shared/"
 
       - name: Copiar os arquivos
-        run: docker compose cp app:./shared/.coverage /home/runner/work/cashwallet-api/cashwallet-api/
+        run: docker compose cp cashwallet-api:./shared/.coverage /home/runner/work/cashwallet-api/cashwallet-api/
 
       - uses: codecov/codecov-action@v3
         with:
