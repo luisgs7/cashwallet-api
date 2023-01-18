@@ -19,13 +19,15 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
-        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && coverage run manage.py test" ${{ matrix.test-name }}
-      
-      - name: Upload coverage data to coveralls.io
-        run: docker-compose run --rm app sh -c "coveralls --service=github"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_FLAG_NAME: ${{ matrix.test-name }}
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && coverage run manage.py test && coverage report"
+
+      - name: Copying file from container
+        run: docker-compose cp app:/app/.coverage .
+
+      - uses: codecov/codecov-action@v3
+        with:
+          files: ./.coverage
+          verbose: true # optional (default = false)
           
       - name: Pylint
         run: docker-compose run --rm app sh -c "pylint *"
@@ -33,17 +35,5 @@ jobs:
       - name: Flake8
         run: docker-compose run --rm app sh -c "flake8"
         
-  coveralls:
-    name: Indicate completion to coveralls.io
-    needs: test-lint
-    runs-on: ubuntu-latest
-    container: python:3-slim
-    steps:
-    - name: Finished
-      run: |
-        docker-compose run --rm app sh -c "pip install --upgrade coveralls"
-        docker-compose run --rm app sh -c "coveralls --service=github --finish"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       
