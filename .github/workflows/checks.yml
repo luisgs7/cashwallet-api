@@ -21,7 +21,7 @@ jobs:
           DB_PASS: ${{ secrets.DB_PASS }}
         run: docker-compose run app sh -c "python manage.py wait_for_db && 
              coverage run manage.py test &&
-             coverage xml && mv .coverage ./app 
+             coverage xml && mv .coverage ./app"
         
       - uses: codecov/codecov-action@v3
         with:
