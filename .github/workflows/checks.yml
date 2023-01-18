@@ -20,11 +20,12 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
         run: docker-compose run app sh -c "python manage.py wait_for_db && 
-             coverage run manage.py test && coverage app/"
+             coverage run manage.py test &&
+             coverage xml && mv .coverage ./app 
         
       - uses: codecov/codecov-action@v3
         with:
-          files: ./app/.codecov
+          files: ./app/coverage.xml
           verbose: true # optional (default = false)
           
       - name: Pylint
