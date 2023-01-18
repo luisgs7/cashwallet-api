@@ -27,7 +27,7 @@ jobs:
         run: docker-compose run app sh -c "ls -a ./shared/"
 
       - name: Copiar os arquivos
-        run: docker-compose --help
+        run: docker compose --help
 
       - uses: codecov/codecov-action@v3
         with:
