@@ -19,7 +19,7 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
-        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && coverage run manage.py test && coverage report" && docker compose cp app:/app/.coverage .
+        run: docker-compose run app sh -c "python manage.py wait_for_db && coverage run manage.py test && coverage report" && docker compose cp app:/app/.coverage .
 
       - uses: codecov/codecov-action@v3
         with:
