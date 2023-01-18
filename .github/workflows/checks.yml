@@ -26,6 +26,9 @@ jobs:
       - name: Verificar existencia do arquivo
         run: docker-compose run app sh -c "ls -a ./shared/"
 
+      - name: Verificar existencia do arquivo for do container
+        run: ls -a ./shared/
+
       - uses: codecov/codecov-action@v3
         with:
           files: ./shared/.codecov
