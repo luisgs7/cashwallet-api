@@ -22,7 +22,7 @@ jobs:
         run: docker-compose run --rm app sh -c "python manage.py wait_for_db && coverage run manage.py test && coverage report"
 
       - name: Copying file from container
-        run: docker-compose cp app:/app/.coverage .
+        run: docker compose cp app:/app/.coverage .
 
       - uses: codecov/codecov-action@v3
         with:
