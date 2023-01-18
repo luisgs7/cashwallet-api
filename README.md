@@ -1,4 +1,4 @@
-[![CI](https://github.com/dynaconf/dynaconf/actions/workflows/main.yml/badge.svg)](https://github.com/luisgs7/cashwallet-api/actions/workflows/checks.yml)
+[![Checks](https://github.com/luisgs7/cashwallet-api/actions/workflows/checks.yml/badge.svg)](https://github.com/luisgs7/cashwallet-api/actions/workflows/checks.yml)
 [![codecov](https://codecov.io/gh/luisgs7/cashwallet-api/branch/main/graph/badge.svg?token=MMOE41M9XB)](https://codecov.io/gh/luisgs7/cashwallet-api)
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/)
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
