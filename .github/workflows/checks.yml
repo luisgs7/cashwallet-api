@@ -25,7 +25,7 @@ jobs:
 
       - uses: codecov/codecov-action@v3
         with:
-          files: ./shared/.coverage
+          files: docker-compose run app sh -c "./shared/.coverage"
           verbose: true # optional (default = false)
           
       - name: Pylint
