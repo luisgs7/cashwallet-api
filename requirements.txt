@@ -3,5 +3,5 @@ djangorestframework==3.14.0
 pylint==2.15.2
 flake8==4.0.1
 psycopg2>=2.8.6,<2.9
-drf-spectacular>=0.15.1,<0.16
+drf-spectacular==0.26.2
 coverage==7.0.5
